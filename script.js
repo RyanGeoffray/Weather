@@ -1,10 +1,14 @@
-window.addEventListener('load', async ()=> {
+window.addEventListener('load', ()=> {
+  document.getElementById("button").onclick = onButtonPress;
+
   if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(position =>{
+    navigator.geolocation.getCurrentPosition(async position => {
       const long = position.coords.longitude;
       const lat = position.coords.latitude;
 
-      updateDOM(await fetchWeatherData(lat, long));
+      const d = await fetchWeatherData(lat, long);
+      updateDOM(d)
+      // updateDOM(await fetchWeatherData(lat, long));
     })
   }
     //const api2 = `http://openweathermap.org/img/wn/${icon}@2x.png`;
@@ -40,5 +44,18 @@ async function fetchWeatherData(lat, long) {
         return data;
       } catch (error) {
         console.error(`Error fetching weather data: ${error}`);
+        setErrorMessage(error);
+        return null
       }
+}
+
+function setErrorMessage(message) {
+  const errorEle = document.getElementById("error-message");
+
+  errorEle.textContent = message
+}
+
+
+function onButtonPress() {
+  setErrorMessage("MESSAGE");
 }
