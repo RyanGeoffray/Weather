@@ -12,7 +12,7 @@ window.addEventListener('load', ()=> {
       lat = position.coords.latitude;
 
       const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=dd088661d976220ba9d4d12cf3d1d70c`;
-      
+
       //const pic = `http://openweathermap.org/img/wn/${icon}@2x.png`;
       fetch(api)
       //fetch(pic)
@@ -28,7 +28,7 @@ window.addEventListener('load', ()=> {
         temperatureDegree.textContent = temp_max;
         temperatureDescription.textContent = description;
         locationTimezone.textContent = name;
-        icon.backgroundImage = 
+        icon.backgroundImage = //Heres an edit
       })
     });
     //const api2 = `http://openweathermap.org/img/wn/${icon}@2x.png`;
