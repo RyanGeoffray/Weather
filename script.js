@@ -21,9 +21,10 @@ function updateDOM(weatherData) {
   let locationTimezone = document.querySelector('.location-timezone');
   let icon = document.querySelector('.icon');
 
-  const{description, weatherIcon} = data.weather[0];
-  const{temp_max} = data.main;
-  const{name} = data;
+  const{description, weatherIcon} = weatherData.weather[0];
+  const{temp_max} = weatherData.main;
+  const{name} = weatherData;
+
   //set DOM elements from API
   temperatureDegree.textContent = temp_max;
   temperatureDescription.textContent = description;
